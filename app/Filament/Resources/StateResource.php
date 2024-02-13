@@ -12,6 +12,8 @@ use Filament\Resources\Resource;
 use Filament\Infolists\Components\Section;
 use Filament\Infolists\Components\TextEntry;
 use App\Filament\Resources\StateResource\Pages;
+use App\Filament\Resources\StateMangerResource\RelationManagers\CitiesRelationManager;
+use App\Filament\Resources\CountryMangerResource\RelationManagers\EmployeesRelationManager;
 
 class StateResource extends Resource
 {
@@ -87,7 +89,8 @@ class StateResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            CitiesRelationManager::class,
+            EmployeesRelationManager::class
         ];
     }
 
