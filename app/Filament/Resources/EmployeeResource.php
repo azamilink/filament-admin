@@ -18,6 +18,7 @@ use Illuminate\Support\Collection;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\Indicator;
 use Illuminate\Database\Eloquent\Model;
+use Filament\Notifications\Notification;
 use Filament\Tables\Enums\FiltersLayout;
 use Filament\Forms\Components\DatePicker;
 use Filament\Tables\Filters\SelectFilter;
@@ -226,6 +227,14 @@ class EmployeeResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    // ->successNotificationTitle('Employee deleted')
+                    ->successNotification(
+                        Notification::make()
+                            ->success()
+                            ->title('Employes deleted.')
+                            ->body('The Employee deleted successfully.')
+                    )
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
