@@ -2,36 +2,39 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
+use App\Filament\Resources\EmployeeResource\Pages;
 use App\Models\City;
-use Filament\Tables;
+use App\Models\Employee;
 use App\Models\State;
+use Filament\Forms;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
-use App\Models\Employee;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Illuminate\Support\Carbon;
-use Filament\Infolists\Infolist;
-use Filament\Resources\Resource;
-use Illuminate\Support\Collection;
-use Filament\Tables\Filters\Filter;
-use Filament\Tables\Filters\Indicator;
-use Illuminate\Database\Eloquent\Model;
-use Filament\Notifications\Notification;
-use Filament\Tables\Enums\FiltersLayout;
-use Filament\Forms\Components\DatePicker;
-use Filament\Tables\Filters\SelectFilter;
-use Illuminate\Database\Eloquent\Builder;
 use Filament\Infolists\Components\Section;
 use Filament\Infolists\Components\TextEntry;
-use App\Filament\Resources\EmployeeResource\Pages;
+use Filament\Infolists\Infolist;
+use Filament\Notifications\Notification;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Enums\FiltersLayout;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\Indicator;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
 
 class EmployeeResource extends Resource
 {
     protected static ?string $model = Employee::class;
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
     protected static ?string $navigationGroup = 'Employee Management';
+
     protected static ?string $recordTitleAttribute = 'first_name'; //Pencarian Global
 
     public static function getGlobalSearchResultTitle(Model $record): string
@@ -47,7 +50,7 @@ class EmployeeResource extends Resource
     public static function getGlobalSearchResultDetails(Model $record): array
     {
         return [
-            'Country' => $record->country->name
+            'Country' => $record->country->name,
         ];
     }
 
@@ -210,17 +213,17 @@ class EmployeeResource extends Resource
                         $indicators = [];
 
                         if ($data['from'] ?? null) {
-                            $indicators[] = Indicator::make('Created from ' . Carbon::parse($data['from'])->toFormattedDateString())
+                            $indicators[] = Indicator::make('Created from '.Carbon::parse($data['from'])->toFormattedDateString())
                                 ->removeField('from');
                         }
 
                         if ($data['until'] ?? null) {
-                            $indicators[] = Indicator::make('Created until ' . Carbon::parse($data['until'])->toFormattedDateString())
+                            $indicators[] = Indicator::make('Created until '.Carbon::parse($data['until'])->toFormattedDateString())
                                 ->removeField('until');
                         }
 
                         return $indicators;
-                    })
+                    }),
             ])
             //         })->columnSpan(2)->columns(2),
             // ], layout: FiltersLayout::AboveContent)->filtersFormColumns(3)
@@ -234,7 +237,7 @@ class EmployeeResource extends Resource
                             ->success()
                             ->title('Employes deleted.')
                             ->body('The Employee deleted successfully.')
-                    )
+                    ),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -264,7 +267,7 @@ class EmployeeResource extends Resource
                     ->schema([
                         TextEntry::make('address'),
                         TextEntry::make('zip_code'),
-                    ])->columns(2)
+                    ])->columns(2),
             ]);
     }
 

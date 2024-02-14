@@ -2,12 +2,12 @@
 
 namespace App\Filament\Resources\EmployeeResource\Pages;
 
-use Filament\Actions;
-use App\Models\Employee;
-use Filament\Resources\Pages\ListRecords;
-use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\EmployeeResource;
+use App\Models\Employee;
+use Filament\Actions;
+use Filament\Resources\Pages\ListRecords;
 use Filament\Resources\Pages\ListRecords\Tab;
+use Illuminate\Database\Eloquent\Builder;
 
 class ListEmployees extends ListRecords
 {

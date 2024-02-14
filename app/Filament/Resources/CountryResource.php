@@ -2,18 +2,18 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
-use Filament\Tables;
-use App\Models\Country;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Filament\Infolists\Infolist;
-use Filament\Resources\Resource;
-use Filament\Infolists\Components\Section;
-use Filament\Infolists\Components\TextEntry;
+use App\Filament\Resources\CountryMangerResource\RelationManagers\EmployeesRelationManager;
 use App\Filament\Resources\CountryResource\Pages;
 use App\Filament\Resources\CountryResource\RelationManagers\StatesRelationManager;
-use App\Filament\Resources\CountryMangerResource\RelationManagers\EmployeesRelationManager;
+use App\Models\Country;
+use Filament\Forms;
+use Filament\Forms\Form;
+use Filament\Infolists\Components\Section;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Infolist;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
 
 class CountryResource extends Resource
 {
@@ -28,7 +28,6 @@ class CountryResource extends Resource
     protected static ?string $navigationGroup = 'System Management';
 
     protected static ?int $navigationSort = 1;
-
     // protected static ?string $slug = 'employees-countries';
 
     public static function form(Form $form): Form
@@ -92,7 +91,7 @@ class CountryResource extends Resource
                         TextEntry::make('name')->label('Name'),
                         TextEntry::make('code')->label('Country Code'),
                         TextEntry::make('phoecode')->label('Phone Code'),
-                    ])->columns(2)
+                    ])->columns(2),
             ]);
     }
 
@@ -100,7 +99,7 @@ class CountryResource extends Resource
     {
         return [
             StatesRelationManager::class,
-            EmployeesRelationManager::class
+            EmployeesRelationManager::class,
         ];
     }
 

@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources\EmployeeResource\Pages;
 
+use App\Filament\Resources\EmployeeResource;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
-use App\Filament\Resources\EmployeeResource;
 
 class CreateEmployee extends CreateRecord
 {

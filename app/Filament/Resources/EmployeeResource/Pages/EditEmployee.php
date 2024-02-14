@@ -2,10 +2,10 @@
 
 namespace App\Filament\Resources\EmployeeResource\Pages;
 
+use App\Filament\Resources\EmployeeResource;
 use Filament\Actions;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
-use App\Filament\Resources\EmployeeResource;
 
 class EditEmployee extends EditRecord
 {

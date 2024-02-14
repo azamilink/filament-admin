@@ -2,27 +2,33 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
-use Filament\Tables;
+use App\Filament\Resources\CountryMangerResource\RelationManagers\EmployeesRelationManager;
+use App\Filament\Resources\StateMangerResource\RelationManagers\CitiesRelationManager;
+use App\Filament\Resources\StateResource\Pages;
 use App\Models\State;
+use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Filament\Infolists\Infolist;
-use Filament\Resources\Resource;
 use Filament\Infolists\Components\Section;
 use Filament\Infolists\Components\TextEntry;
-use App\Filament\Resources\StateResource\Pages;
-use App\Filament\Resources\StateMangerResource\RelationManagers\CitiesRelationManager;
-use App\Filament\Resources\CountryMangerResource\RelationManagers\EmployeesRelationManager;
+use Filament\Infolists\Infolist;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
 
 class StateResource extends Resource
 {
     protected static ?string $model = State::class;
+
     protected static ?string $navigationIcon = 'heroicon-o-building-library';
+
     protected static ?string $navigationLabel = 'State';
+
     protected static ?string $modelLabel = 'Employees State';
+
     protected static ?string $navigationGroup = 'System Management';
+
     protected static ?int $navigationSort = 2;
+
     public static function form(Form $form): Form
     {
         return $form
@@ -81,8 +87,8 @@ class StateResource extends Resource
                 Section::make('State Info')
                     ->schema([
                         TextEntry::make('country.name')->label('Country Name'),
-                        TextEntry::make('name')->label('State Name')
-                    ])->columns(2)
+                        TextEntry::make('name')->label('State Name'),
+                    ])->columns(2),
             ]);
     }
 
@@ -90,7 +96,7 @@ class StateResource extends Resource
     {
         return [
             CitiesRelationManager::class,
-            EmployeesRelationManager::class
+            EmployeesRelationManager::class,
         ];
     }
 
